@@ -1,4 +1,4 @@
-package ElasticJobExample.ElasticJobExample;
+package dataflowjob;
 
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
 import com.dangdang.ddframe.job.config.dataflow.DataflowJobConfiguration;
@@ -19,7 +19,7 @@ public class App {
 
     private static CoordinatorRegistryCenter createRegistryCenter() {
         CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(
-                new ZookeeperConfiguration("localhost:2191,localhost:2192,localhost:2193", "elastic-job-demo"));
+                new ZookeeperConfiguration("localhost:2181", "elastic-job-demo"));
         regCenter.init();
         return regCenter;
     }
