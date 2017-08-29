@@ -27,10 +27,10 @@ public class MyDataflowJobApp {
 
     private static LiteJobConfiguration createJobConfiguration() {
         // 创建作业配置
-        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0/5 * * * * ?", 3)
-                .shardingItemParameters("0=beijing,1=shanghai,2=guangzhou").build();
-        DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig,
-                MyDataflowJob.class.getCanonicalName(), true);
+        JobCoreConfiguration dataFlowCoreConfig = JobCoreConfiguration.newBuilder("demoDataflowJob", "0/5 * * * * ?", 3)
+                .shardingItemParameters("0=0,1=1,2=2").build();
+        DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(dataFlowCoreConfig,
+                MyDataflowJob.class.getCanonicalName(), true);// 第三个参数isStreaming，用于控制是否流式不停歇的处理数据
         LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).overwrite(true)// 覆盖配置
                 .build();
         return result;

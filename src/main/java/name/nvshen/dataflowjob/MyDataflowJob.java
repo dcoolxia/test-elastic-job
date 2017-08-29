@@ -23,14 +23,14 @@ public class MyDataflowJob implements DataflowJob<Foo> {
     public List<Foo> fetchData(ShardingContext shardingContext) {
         List<Foo> result = new ArrayList<Foo>();
         result = dataProcess.getData(shardingContext.getShardingParameter(), shardingContext.getShardingTotalCount());
-        System.out.println(String.format("------Thread ID: %s, Date: %s, Sharding Context: %s, Action: %s, Data: %s",
+        System.out.println(String.format("fetchData------Thread ID: %s, Date: %s, Sharding Context: %s, Action: %s, Data: %s",
                 Thread.currentThread().getId(), new Date(), shardingContext, "fetch data", result));
         return result;
     }
 
     @Override
     public void processData(ShardingContext shardingContext, List<Foo> data) {
-        System.out.println(String.format("------Thread ID: %s, Date: %s, Sharding Context: %s, Action: %s, Data: %s",
+        System.out.println(String.format("processData------Thread ID: %s, Date: %s, Sharding Context: %s, Action: %s, Data: %s",
                 Thread.currentThread().getId(), new Date(), shardingContext, "finish data", data));
         for (Foo foo : data) {
             dataProcess.setData(foo.getId());
