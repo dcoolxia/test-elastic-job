@@ -7,6 +7,11 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import name.nvshen.dataflowjob.entity.Foo;
 
+/**
+ * 具体的处理类
+ * 
+ * @author David
+ */
 public class DataProcess {
 
     private Map<Integer, Foo> data = new ConcurrentHashMap<>(30, 1);

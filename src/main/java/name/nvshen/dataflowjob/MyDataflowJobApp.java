@@ -9,8 +9,9 @@ import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperConfiguration;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
 
 /**
- * Hello world!
+ * 基于流式数据的处理job
  * 
+ * @author David
  */
 public class MyDataflowJobApp {
     public static void main(String[] args) {
@@ -26,11 +27,12 @@ public class MyDataflowJobApp {
 
     private static LiteJobConfiguration createJobConfiguration() {
         // 创建作业配置
-        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0/10 * * * * ?", 3)
-                .shardingItemParameters("0=0,1=1,2=2").build();
+        JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0/5 * * * * ?", 3)
+                .shardingItemParameters("0=beijing,1=shanghai,2=guangzhou").build();
         DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig,
                 MyDataflowJob.class.getCanonicalName(), true);
-        LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).build();
+        LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).overwrite(true)// 覆盖配置
+                .build();
         return result;
     }
 }

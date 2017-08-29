@@ -10,15 +10,27 @@ public class MySimpleJob implements SimpleJob {
         switch (context.getShardingItem()) {
             case 0: 
                 // do something by sharding item 0
-                System.out.println("0");
+                System.out.println(context.getShardingItem()+","+
+                        context.getJobName()+","+
+                        context.getJobParameter()+","+
+                        context.getShardingParameter()+","+
+                        context.getShardingTotalCount());
                 break;
             case 1: 
                 // do something by sharding item 1
-                System.out.println("1");
+                System.out.println(context.getShardingItem()+","+
+                        context.getJobName()+","+
+                        context.getJobParameter()+","+
+                        context.getShardingParameter()+","+
+                        context.getShardingTotalCount());
                 break;
             case 2: 
                 // do something by sharding item 2
-                System.out.println("2");
+                System.out.println(context.getShardingItem()+","+
+                        context.getJobName()+","+
+                        context.getJobParameter()+","+
+                        context.getShardingParameter()+","+
+                        context.getShardingTotalCount());
                 break;
             // case n: ...
         }

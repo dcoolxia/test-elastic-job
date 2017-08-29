@@ -11,15 +11,20 @@ import name.nvshen.dataflowjob.entity.Foo;
 import name.nvshen.dataflowjob.process.DataProcess;
 import name.nvshen.dataflowjob.process.DataProcessFactory;
 
+/**
+ * 作业的逻辑处理部分
+ * 
+ * @author David
+ */
 public class MyDataflowJob implements DataflowJob<Foo> {
     private DataProcess dataProcess = DataProcessFactory.getDataProcess();
 
     @Override
-    public List<Foo> fetchData(ShardingContext context) {
+    public List<Foo> fetchData(ShardingContext shardingContext) {
         List<Foo> result = new ArrayList<Foo>();
-        result = dataProcess.getData(context.getShardingParameter(), context.getShardingTotalCount());
+        result = dataProcess.getData(shardingContext.getShardingParameter(), shardingContext.getShardingTotalCount());
         System.out.println(String.format("------Thread ID: %s, Date: %s, Sharding Context: %s, Action: %s, Data: %s",
-                Thread.currentThread().getId(), new Date(), context, "fetch data", result));
+                Thread.currentThread().getId(), new Date(), shardingContext, "fetch data", result));
         return result;
     }
 
