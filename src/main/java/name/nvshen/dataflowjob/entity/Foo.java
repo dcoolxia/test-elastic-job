@@ -1,4 +1,4 @@
-package dataflowjob.entity;  
+package name.nvshen.dataflowjob.entity;  
   
 public class Foo {  
     private int id;  

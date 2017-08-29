@@ -1,9 +1,9 @@
-package simplejob;
+package name.nvshen.simplejob;
 
 import com.dangdang.ddframe.job.api.ShardingContext;
 import com.dangdang.ddframe.job.api.simple.SimpleJob;
 
-public class MyElasticJob implements SimpleJob {
+public class MySimpleJob implements SimpleJob {
     
     @Override
     public void execute(ShardingContext context) {

@@ -1,4 +1,4 @@
-package dataflowjob;
+package name.nvshen.dataflowjob;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,11 +7,11 @@ import java.util.List;
 import com.dangdang.ddframe.job.api.ShardingContext;
 import com.dangdang.ddframe.job.api.dataflow.DataflowJob;
 
-import dataflowjob.entity.Foo;
-import dataflowjob.process.DataProcess;
-import dataflowjob.process.DataProcessFactory;
+import name.nvshen.dataflowjob.entity.Foo;
+import name.nvshen.dataflowjob.process.DataProcess;
+import name.nvshen.dataflowjob.process.DataProcessFactory;
 
-public class JavaDataflowJob implements DataflowJob<Foo> {
+public class MyDataflowJob implements DataflowJob<Foo> {
     private DataProcess dataProcess = DataProcessFactory.getDataProcess();
 
     @Override

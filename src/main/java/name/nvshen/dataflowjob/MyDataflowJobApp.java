@@ -1,4 +1,4 @@
-package dataflowjob;
+package name.nvshen.dataflowjob;
 
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
 import com.dangdang.ddframe.job.config.dataflow.DataflowJobConfiguration;
@@ -12,7 +12,7 @@ import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
  * Hello world!
  * 
  */
-public class App {
+public class MyDataflowJobApp {
     public static void main(String[] args) {
         new JobScheduler(createRegistryCenter(), createJobConfiguration()).init();
     }
@@ -29,7 +29,7 @@ public class App {
         JobCoreConfiguration coreConfig = JobCoreConfiguration.newBuilder("myDataFlowTest", "0/10 * * * * ?", 3)
                 .shardingItemParameters("0=0,1=1,2=2").build();
         DataflowJobConfiguration dataflowJobConfig = new DataflowJobConfiguration(coreConfig,
-                JavaDataflowJob.class.getCanonicalName(), true);
+                MyDataflowJob.class.getCanonicalName(), true);
         LiteJobConfiguration result = LiteJobConfiguration.newBuilder(dataflowJobConfig).build();
         return result;
     }

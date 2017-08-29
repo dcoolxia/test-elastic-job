@@ -1,4 +1,4 @@
-package dataflowjob.process;  
+package name.nvshen.dataflowjob.process;  
   
   
 public class DataProcessFactory {  
