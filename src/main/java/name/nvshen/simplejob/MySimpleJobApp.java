@@ -1,9 +1,13 @@
 package name.nvshen.simplejob;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.dangdang.ddframe.job.config.JobCoreConfiguration;
 import com.dangdang.ddframe.job.config.simple.SimpleJobConfiguration;
 import com.dangdang.ddframe.job.lite.api.JobScheduler;
 import com.dangdang.ddframe.job.lite.config.LiteJobConfiguration;
+import com.dangdang.ddframe.job.lite.internal.schedule.JobRegistry;
 import com.dangdang.ddframe.job.reg.base.CoordinatorRegistryCenter;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperConfiguration;
 import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
@@ -13,10 +17,18 @@ import com.dangdang.ddframe.job.reg.zookeeper.ZookeeperRegistryCenter;
  * 
  * @author David
  */
+@RestController
+@RequestMapping("/simple")
 public class MySimpleJobApp {
 
     public static void main(String[] args) {
         new JobScheduler(createRegistryCenter(), createJobConfiguration()).init();
+    }
+    
+    @RequestMapping("/add")
+    public boolean add() {
+        new JobScheduler(createRegistryCenter(), createJobConfiguration()).init();
+        return true;
     }
 
     private static CoordinatorRegistryCenter createRegistryCenter() {

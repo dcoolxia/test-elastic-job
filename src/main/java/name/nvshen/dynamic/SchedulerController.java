@@ -29,14 +29,13 @@ public class SchedulerController {
     @Resource
     private ZookeeperRegistryCenter regCenter;
 
-    @Resource
-    private JobEventConfiguration jobEventConfiguration;
+//    @Resource
+//    private JobEventConfiguration jobEventConfiguration;
 
     private void add(final SimpleJob simpleJob, final String cron, final int shardingTotalCount,
             final String shardingItemParameters) {
         new SpringJobScheduler(simpleJob, regCenter,
-                getLiteJobConfiguration(simpleJob.getClass(), cron, shardingTotalCount, shardingItemParameters),
-                jobEventConfiguration).init();
+                getLiteJobConfiguration(simpleJob.getClass(), cron, shardingTotalCount, shardingItemParameters)).init();
     }
 
     private LiteJobConfiguration getLiteJobConfiguration(final Class<? extends SimpleJob> jobClass, final String cron,
@@ -68,8 +67,8 @@ public class SchedulerController {
      */
     @RequestMapping("/update")
     public boolean update() {
-        JobRegistry.getInstance().getJobScheduleController(SimpleJob.class.getName())
-                .rescheduleJob("0/20 * * * * ?");
+        JobRegistry.getInstance().getJobScheduleController(MySimpleJob.class.getName())
+                .rescheduleJob("0/10 * * * * ?");
         return true;
     }
 
@@ -80,7 +79,7 @@ public class SchedulerController {
      */
     @RequestMapping("/delete")
     public boolean delete() {
-        JobRegistry.getInstance().getJobScheduleController(SimpleJob.class.getName()).shutdown();
+        JobRegistry.getInstance().getJobScheduleController(MySimpleJob.class.getName()).shutdown();
         return true;
     }
 }
