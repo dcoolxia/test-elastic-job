@@ -33,7 +33,7 @@ public class MySimpleJobApp {
 
     private static CoordinatorRegistryCenter createRegistryCenter() {
         CoordinatorRegistryCenter regCenter = new ZookeeperRegistryCenter(
-                new ZookeeperConfiguration("localhost:2181", "elastic-job-demo"));
+                new ZookeeperConfiguration("localhost:2181", "test-elastic-job"));
         regCenter.init();
         return regCenter;
     }

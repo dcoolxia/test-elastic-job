@@ -12,7 +12,7 @@
                         ">
     <!--配置作业注册中心 -->
 	<reg:zookeeper id="regCenter" server-lists="localhost:2181"
-		namespace="elastic-job-demo" base-sleep-time-milliseconds="1000"
+		namespace="test-elastic-job" base-sleep-time-milliseconds="1000"
 		max-sleep-time-milliseconds="3000" max-retries="3" />
     
     <!-- 配置作业-->
