@@ -9,8 +9,8 @@ public class MySimpleJob implements SimpleJob {
     
     @Override
     public void execute(ShardingContext context) {
-        System.out.println("开始任务"+new Date());
-        switch (context.getShardingItem()) {
+        System.out.println(context.getJobName()+"：开始任务"+new Date());
+        /*switch (context.getShardingItem()) {
             case 0: 
                 // do something by sharding item 0
                 System.out.println(context.getShardingItem()+","+
@@ -36,6 +36,6 @@ public class MySimpleJob implements SimpleJob {
                         context.getShardingTotalCount());
                 break;
             // case n: ...
-        }
+        }*/
     }
 }
