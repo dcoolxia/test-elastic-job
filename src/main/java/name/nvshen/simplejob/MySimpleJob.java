@@ -9,7 +9,7 @@ public class MySimpleJob implements SimpleJob {
     
     @Override
     public void execute(ShardingContext context) {
-        System.out.println(context.getJobName()+"：开始任务"+new Date());
+        System.out.println(context.getJobName()+"：开始任务"+context.getJobParameter()+new Date());
         /*switch (context.getShardingItem()) {
             case 0: 
                 // do something by sharding item 0
