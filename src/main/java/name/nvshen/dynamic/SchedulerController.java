@@ -109,10 +109,8 @@ public class SchedulerController {
     }
 
     /**
-     * 增加一个job
-     * 
+     * 动态增加job
      */
-    @SuppressWarnings("deprecation")
     @RequestMapping("/add/{jobName}")
     public boolean add(@PathVariable("jobName")String jobName,
             String cron) {
@@ -133,9 +131,7 @@ public class SchedulerController {
     }
 
     /**
-     * 修改一个作业调度
-     * 
-     * @return 成功标识
+     * 动态修改job
      */
     @RequestMapping("/update/{jobName}")
     public boolean update(@PathVariable("jobName")String jobName,
@@ -147,9 +143,7 @@ public class SchedulerController {
     }
 
     /**
-     * 删除一个作业调度
-     * 
-     * @return 成功标识
+     * 动态删除job
      */
     @RequestMapping("/delete/{jobName}")
     public boolean delete(@PathVariable("jobName")String jobName) {
